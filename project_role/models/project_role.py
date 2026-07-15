@@ -7,7 +7,9 @@ from odoo.tools.translate import html_translate
 
 
 class ProjectRole(models.Model):
-    _name = "project.role"
+    # Odoo 19 introduced project.role natively (color, sequence, name).
+    # Extend it via _inherit instead of _name to preserve native fields.
+    _inherit = "project.role"
     _description = "Project Role"
     _parent_name = "parent_id"
     _parent_store = True
